@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="title-home" style="margin: 3% 0px;">
+        <h1 style="font-size: 24px; color: rgb(24, 153, 157); ">Blog App Dist</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card p-4 mb-5">
+                <div class="row">
+                    <div class="col-md-8 p-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>
+                                    {{blogs[2].title}}
+                                </h3>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="text-secondary">
+                                    <strong>Por {{blogs[2].autor}} - </strong>
+                                    <span class="text-muted">
+                                        {{blogs[2].date}}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-md-12 h-100">
+                                <img class="w-100 h-50 rounded" src="https://getwallpapers.com/wallpaper/full/5/1/2/299626.jpg" alt="">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                 <p>
+                                    {{blogs[2].content}}
+                                 </p>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-primary" routerLink="/blog/{{blogs[2].id}}">
+                                    Leer Más
+                                </button>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="col-md-4" style="margin-top: 3%;">
+                        <h3 class="text-muted mb-4">Otros blogs</h3>
+                        <div *ngFor="let blog of blogs" class="blog-secondary mb-5" style="cursor: pointer;">
+                            <div class="img" style="width: 40%;">
+                                <img class="w-100 rounded" src="https://live.staticflickr.com/65535/49674780758_32259360b9_z.jpg" alt="">
+                            </div>
+                            <div class="w-50" style="margin: 0px 15px;">
+                                <h4>{{blog.title}}</h4>
+                                <p>{{makeResume(blog.content)}}</p>
+                                <p class="text-muted">{{blog.date}}</p>
+                                <span style="margin: 0px 3px;" *ngFor="let tag of blog.tags" class="badge bg-success">
+                                    {{tag}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
