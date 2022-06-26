@@ -5,16 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { BlogComponent } from './blog/blog.component';
+import { BlogGeneratorComponent } from './blog-generator/blog-generator.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    BlogComponent,
+    BlogGeneratorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    EditorModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
