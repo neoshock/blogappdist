@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import tinymce from 'tinymce';
 
 @Component({
   selector: 'app-blog-generator',
@@ -8,11 +9,24 @@ import { Component, OnInit } from '@angular/core';
 export class BlogGeneratorComponent implements OnInit {
 
   public title: string = '';
-  public date: any; 
+  public date: any;
   public autor: string = '';
   public content: any;
 
   public content_result: string = '';
+
+  public preview: any;
+
+  public tinymceInit = {
+    height: 500,
+    plugins: [
+      'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+      'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+      'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+    ],
+    toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+    image_advtab: true
+  }
 
   constructor() { }
 
@@ -21,18 +35,25 @@ export class BlogGeneratorComponent implements OnInit {
   }
 
   generateBlog() {
-    let content = document.getElementById('content');
+
     //generate a json 
     let json = {
       "title": this.title,
       "content": this.content,
       "date": this.date,
       "autor": this.autor,
-      "id": Math.random()
+      "id": this.getRandomInt(100000)
     }
 
     this.content_result = JSON.stringify(json);
 
+    //insert a string in the preview
+    this.preview = this.content;
+  }
+
+  //generate a int random number with characters
+  getRandomInt(max: number) {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 
   onSelectionChange(event: any) {
