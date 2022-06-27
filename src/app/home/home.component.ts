@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
     return content.substring(0, 50) + '...';
   }
 
+  getLastBlog(): any | undefined {
+    return this.blogServices.getBlogByLastDate();
+  }
+
 }

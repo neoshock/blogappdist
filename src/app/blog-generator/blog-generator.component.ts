@@ -1,3 +1,4 @@
+import { BlogService } from './../services/blog.service';
 import { Component, OnInit } from '@angular/core';
 import tinymce from 'tinymce';
 
@@ -9,7 +10,7 @@ import tinymce from 'tinymce';
 export class BlogGeneratorComponent implements OnInit {
 
   public title: string = '';
-  public date: any;
+  public date: Date = new Date;
   public autor: string = '';
   public content: any;
 
@@ -28,7 +29,7 @@ export class BlogGeneratorComponent implements OnInit {
     image_advtab: true
   }
 
-  constructor() { }
+  constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
 
@@ -38,14 +39,16 @@ export class BlogGeneratorComponent implements OnInit {
 
     //generate a json 
     let json = {
-      "title": this.title,
-      "content": this.content,
-      "date": this.date,
-      "autor": this.autor,
-      "id": this.getRandomInt(100000)
+      title: this.title,
+      content: this.content,
+      date: this.date,
+      autor: this.autor,
+      id: this.getRandomInt(100000)
     }
 
     this.content_result = JSON.stringify(json);
+
+    this.blogService.generateBlog(this.title, this.content, this.date, this.autor);
 
     //insert a string in the preview
     this.preview = this.content;
