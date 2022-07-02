@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row" style="margin: 3% auto;">
+        <div class="col-md-12">
+            <h2 style="font-size: 39px;">{{blog.title}}</h2>
+        </div>
+        <div class="col-md-12 blog_header">
+            <div class="blog_autor">
+                <h4>
+                    Por: {{blog.autor}}
+                </h4>
+            </div>
+            <div class="blog_date">
+                <p>
+                    {{blog.date}}
+                </p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="blog_content" [innerHtml]="blog.content">
+
+            </div>
+        </div>
+    </div>
+</div>

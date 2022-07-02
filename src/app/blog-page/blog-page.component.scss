@@ -1,0 +1,17 @@
+.blog_header {
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+    .blog_autor {
+        margin-left: 10px;
+        color: #000000;
+    }
+
+    .blog_date {
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 14px;
+        color: #ccc;
+    }
+}

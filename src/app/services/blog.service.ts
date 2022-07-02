@@ -41,9 +41,11 @@ export class BlogService {
 
   //getBlogBylastDate
   getBlogByLastDate() {
-    return this.blogs.sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+    return this.blogs_json.find(blog => blog.date === this.blogs_json[this.blogs_json.length - 1].date);
+  }
+
+  getBlogById(id: number) {
+    return this.blogs_json.find(blog => blog.id === id);
   }
 
   getRandomInt(arg0: number) {
