@@ -18,11 +18,16 @@ export class HomeComponent implements OnInit {
 
   //make a funtion for make a resume of the blogs
   public makeResume(content: string) {
-    return content.substring(0, 50) + '...';
+    return this.cleanHtml(content.substring(0, 50) + '...');
   }
 
   getLastBlog(): any | undefined {
     return this.blogServices.getBlogByLastDate();
+  }
+
+  //clean html tags
+  public cleanHtml(content: string) {
+    return content.replace(/<\/?[^>]+(>|$)/g, '');
   }
 
 }

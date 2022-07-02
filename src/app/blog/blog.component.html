@@ -27,7 +27,7 @@
                                     <p>{{blog.date}}</p>
                                 </div>
                                 <div class="blog-resume">
-                                    <p> {{blog.content}} <a href="">Leer mas...</a>
+                                    <p> {{blog.content}} <a [routerLink]="['../blogs/',blog.id]">Leer mas...</a>
                                     </p>
                                 </div>
                             </div>
