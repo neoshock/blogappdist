@@ -16,12 +16,20 @@ export class BlogComponent implements OnInit {
     this.blogs = this.blogService.getBlogs();
   }
 
-  makeResume(content: string, maxLength: number) {
-    return this.blogService.getFirstParagraph(content);
-  }
-
   cleanHtml(content: string) {
     return content.replace(/<\/?[^>]+(>|$)/g, '');
+  }
+
+  getImage(index: number) {
+    return this.blogService.getFirstImage(this.blogs[index].content);
+  }
+
+  findBlogByTitle(event: any) {
+    if(event.target.value.length > 0) {
+      this.blogs = this.blogService.getBlogByTitle(event.target.value).filter(blog => blog != undefined);
+    }else{
+      this.blogs = this.blogService.getBlogs();
+    }
   }
 
 }

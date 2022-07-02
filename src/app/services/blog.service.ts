@@ -40,9 +40,20 @@ export class BlogService {
     this.blogs.push(json);
   }
 
-  //get the first <p></p> tag of a string
-  getFirstParagraph(content: string) {
-    return content.substring(content.indexOf('<p>') + 3, content.indexOf('</p>'));
+  //get the src of the first image in the content of the blog
+  getFirstImage(content: string) {
+    let regex = /<img[^>]+src="([^"]+)"/g;
+    let match = regex.exec(content);
+    return match![1];
+  }
+
+  //getBlogByTitle
+  getBlogByTitle(title: string) {
+    return this.blogs_json.map(blog => {
+      if (blog.title.toLowerCase().includes(title.toLowerCase())) {
+        return blog;
+      }
+    })
   }
 
   //getBlogBylastDate

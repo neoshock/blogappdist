@@ -25,6 +25,10 @@ export class HomeComponent implements OnInit {
     return this.blogServices.getBlogByLastDate();
   }
 
+  getImage(index: number) {
+    return this.blogServices.getFirstImage(this.blogs[index].content);
+  }
+
   //clean html tags
   public cleanHtml(content: string) {
     return content.replace(/<\/?[^>]+(>|$)/g, '');

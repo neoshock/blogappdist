@@ -10,14 +10,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="input-group flex-nowrap">
-                            <input type="text" class="form-control" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" (keyup)="findBlogByTitle($event)" aria-describedby="addon-wrapping">
                             <button class="btn btn-outline-secondary" type="button">Buscar</button>
                         </div>
                     </div>
-                    <div class="col-md-12" *ngFor="let blog of blogs">
+                    <div class="col-md-12" *ngFor="let blog of blogs; let i = index">
                         <div class="card p-2 blog-list">
                             <div class="blog-img">
-                                <img class="rounded w-100" src="https://t3.kn3.net/taringa/7/2/1/8/4/5/Tyranus1/8B8.jpg"
+                                <img class="rounded w-100" src="{{getImage(i)}}"
                                     alt="">
                             </div>
                             <div class="blog-content">
@@ -32,6 +32,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12 p-4" *ngIf="this.blogs.length == 0">
+                        <h4>No se encontraron resultados...</h4>
                     </div>
                 </div>
             </div>

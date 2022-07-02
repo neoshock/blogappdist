@@ -22,7 +22,7 @@
                                 </p>
                             </div>
                             <div class="col-md-12 h-100">
-                                <img class="w-100 h-50 rounded" src="https://getwallpapers.com/wallpaper/full/5/1/2/299626.jpg" alt="">
+                                <img class="w-100 h-50 rounded" src="{{getImage(0)}}" alt="">
                             </div>
                             <div class="col-md-12 mt-3">
                                  <p>
@@ -38,9 +38,9 @@
                     </div>  
                     <div class="col-md-4" style="margin-top: 3%;">
                         <h3 class="text-muted mb-4">Otros blogs</h3>
-                        <div *ngFor="let blog of blogs" class="blog-secondary mb-5">
+                        <div *ngFor="let blog of blogs; let i = index" class="blog-secondary mb-5">
                             <div class="img" style="width: 40%;">
-                                <img class="w-100 rounded" src="https://live.staticflickr.com/65535/49674780758_32259360b9_z.jpg" alt="">
+                                <img class="w-100 rounded" src="{{getImage(i)}}" alt="">
                             </div>
                             <div class="w-50" style="margin: 0px 15px;">
                                 <h5 [routerLink]="['../blogs/', blog.id]" style="cursor: pointer;">{{blog.title}}</h5>
