@@ -14,7 +14,14 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogs = this.blogService.getBlogs();
-    console.log(this.blogs);
+  }
+
+  makeResume(content: string, maxLength: number) {
+    return this.blogService.getFirstParagraph(content);
+  }
+
+  cleanHtml(content: string) {
+    return content.replace(/<\/?[^>]+(>|$)/g, '');
   }
 
 }
