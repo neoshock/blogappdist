@@ -14,7 +14,22 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogs = this.blogService.getBlogs();
-    console.log(this.blogs);
+  }
+
+  cleanHtml(content: string) {
+    return content.replace(/<\/?[^>]+(>|$)/g, '');
+  }
+
+  getImage(index: number) {
+    return this.blogService.getFirstImage(this.blogs[index].content);
+  }
+
+  findBlogByTitle(event: any) {
+    if(event.target.value.length > 0) {
+      this.blogs = this.blogService.getBlogByTitle(event.target.value).filter(blog => blog != undefined);
+    }else{
+      this.blogs = this.blogService.getBlogs();
+    }
   }
 
 }

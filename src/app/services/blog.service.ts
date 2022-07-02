@@ -40,6 +40,22 @@ export class BlogService {
     this.blogs.push(json);
   }
 
+  //get the src of the first image in the content of the blog
+  getFirstImage(content: string) {
+    let regex = /<img[^>]+src="([^"]+)"/g;
+    let match = regex.exec(content);
+    return match![1];
+  }
+
+  //getBlogByTitle
+  getBlogByTitle(title: string) {
+    return this.blogs_json.map(blog => {
+      if (blog.title.toLowerCase().includes(title.toLowerCase())) {
+        return blog;
+      }
+    })
+  }
+
   //getBlogBylastDate
   getBlogByLastDate() {
     return this.blogs_json.find(blog => blog.date === this.blogs_json[this.blogs_json.length - 1].date);

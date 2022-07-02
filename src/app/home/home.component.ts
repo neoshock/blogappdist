@@ -17,12 +17,16 @@ export class HomeComponent implements OnInit {
   }
 
   //make a funtion for make a resume of the blogs
-  public makeResume(content: string) {
-    return this.cleanHtml(content.substring(0, 50) + '...');
+  public makeResume(content: string, maxLength: number) {
+    return this.cleanHtml(content.substring(0, maxLength) + '...');
   }
 
   getLastBlog(): any | undefined {
     return this.blogServices.getBlogByLastDate();
+  }
+
+  getImage(index: number) {
+    return this.blogServices.getFirstImage(this.blogs[index].content);
   }
 
   //clean html tags
