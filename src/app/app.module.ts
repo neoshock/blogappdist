@@ -10,6 +10,7 @@ import { BlogGeneratorComponent } from './blog-generator/blog-generator.componen
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule } from '@angular/forms';
 import { BlogPageComponent } from './blog-page/blog-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
     HomeComponent,
     BlogComponent,
     BlogGeneratorComponent,
-    BlogPageComponent
+    BlogPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

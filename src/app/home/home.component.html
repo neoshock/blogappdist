@@ -1,6 +1,6 @@
 <div class="container">
     <div class="title-home" style="margin: 3% 0px;">
-        <h1 style="font-size: 24px; color: rgb(24, 153, 157); ">Blog App Dist</h1>
+        <h1 style="font-size: 24px;" class="text-info">Blog App Dist</h1>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -10,27 +10,28 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h3>
-                                    {{getLastBlog().title}}
+                                    {{blogs[1].title}}
                                 </h3>
                             </div>
                             <div class="col-md-12">
                                 <p class="text-secondary">
-                                    <strong>Por {{getLastBlog().autor}} - </strong>
+                                    <strong>Por {{blogs[1].autor}} - </strong>
                                     <span class="text-muted">
-                                        {{getLastBlog().date}}
+                                        {{blogs[1].date}}
                                     </span>
                                 </p>
                             </div>
-                            <div class="col-md-12 h-100">
-                                <img class="w-100 h-50 rounded" src="{{getImage(0)}}" alt="">
+                            <div class="col-md-12">
+                                <div class="bg_principal" [ngStyle]="{'background-image':'url(https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png)'}">
+                                </div>
                             </div>
                             <div class="col-md-12 mt-3">
                                  <p>
-                                    {{getLastBlog().resume}}
+                                    {{blogs[1].resume}}
                                  </p>
                             </div>
                             <div class="col-md-3">
-                                <a class="btn btn-primary" [routerLink]="['../blogs/',getLastBlog().id]">
+                                <a class="btn btn-primary" [routerLink]="['../blogs/',blogs[1].id]">
                                     Leer Más
                                 </a>
                             </div>
@@ -43,12 +44,11 @@
                                 <img class="w-100 rounded" src="{{getImage(i)}}" alt="">
                             </div>
                             <div class="w-50" style="margin: 0px 15px;">
-                                <h5 [routerLink]="['../blogs/', blog.id]" style="cursor: pointer;">{{blog.title}}</h5>
-                                <p>{{makeResume(blog.resume,30)}}</p>
-                                <p class="text-muted">{{blog.date}}</p>
-                                <span style="margin: 0px 3px;" *ngFor="let tag of blog.tags" class="badge bg-success">
-                                    {{tag}}
+                                <span class="badge bg-info">
+                                    {{blog.autor}}
                                 </span>
+                                <h5 [routerLink]="['../blogs/', blog.id]" style="cursor: pointer;">{{blog.title}}</h5>
+                                <p class="text-muted">{{blog.date}}</p>
                             </div>
                         </div>
                     </div>
@@ -57,3 +57,5 @@
         </div>
     </div>
 </div>
+
+<app-footer></app-footer>
